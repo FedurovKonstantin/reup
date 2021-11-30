@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:reup/dashboard/dashboard_page.dart';
+import 'package:reup/profile/profile_page.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,7 +11,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
+  int selectedIndex = 1;
+  final pages = const [
+    ProfilePage(),
+    DashboardPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -16,38 +23,30 @@ class _HomePageState extends State<HomePage> {
       body: Row(
         children: <Widget>[
           NavigationRail(
-            selectedIndex: _selectedIndex,
+            selectedIndex: selectedIndex,
             onDestinationSelected: (int index) {
               setState(() {
-                _selectedIndex = index;
+                selectedIndex = index;
               });
             },
             labelType: NavigationRailLabelType.selected,
             destinations: const <NavigationRailDestination>[
               NavigationRailDestination(
-                icon: Icon(Icons.favorite_border),
-                selectedIcon: Icon(Icons.favorite),
-                label: Text('First'),
+                icon: Icon(Icons.person_outline),
+                selectedIcon: Icon(Icons.person),
+                label: Text('Профиль'),
               ),
               NavigationRailDestination(
                 icon: Icon(Icons.bookmark_border),
                 selectedIcon: Icon(Icons.book),
-                label: Text('Second'),
-              ),
-              NavigationRailDestination(
-                icon: Icon(Icons.star_border),
-                selectedIcon: Icon(Icons.star),
-                label: Text('Third'),
+                label: Text('Мониторинг'),
               ),
             ],
           ),
           const VerticalDivider(thickness: 1, width: 1),
-          // This is the main content.
           Expanded(
-            child: Center(
-              child: Text('selectedIndex: $_selectedIndex'),
-            ),
-          )
+            child: pages[selectedIndex],
+          ),
         ],
       ),
     );
