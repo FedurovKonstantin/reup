@@ -80,7 +80,7 @@ class _DashboardPageState extends State<DashboardPage> {
           child: SfCartesianChart(
             title: ChartTitle(text: "Эмоциональное состояние"),
             primaryXAxis: CategoryAxis(),
-            series: <LineSeries<_SplineAreaData, String>>[
+            series: <LineSeries<SplineAreaData, String>>[
               users[selectedUser].data,
             ],
           ),
@@ -93,57 +93,57 @@ class _DashboardPageState extends State<DashboardPage> {
 final users = <User>[
   User(
     name: 'Птушкин И.А.',
-    data: LineSeries<_SplineAreaData, String>(
-      dataSource: <_SplineAreaData>[
-        _SplineAreaData('Январь', 35),
-        _SplineAreaData('Февраль', 28),
-        _SplineAreaData('Март', 34),
-        _SplineAreaData('Апрель', 32),
-        _SplineAreaData('Май', 40)
+    data: LineSeries<SplineAreaData, String>(
+      dataSource: <SplineAreaData>[
+        SplineAreaData('Январь', 35),
+        SplineAreaData('Февраль', 28),
+        SplineAreaData('Март', 34),
+        SplineAreaData('Апрель', 32),
+        SplineAreaData('Май', 40)
       ],
-      xValueMapper: (_SplineAreaData sales, _) => sales.year,
-      yValueMapper: (_SplineAreaData sales, _) => sales.y1,
+      xValueMapper: (SplineAreaData sales, _) => sales.year,
+      yValueMapper: (SplineAreaData sales, _) => sales.y1,
     ),
   ),
   User(
     name: 'Иванов А.И.',
-    data: LineSeries<_SplineAreaData, String>(
-      dataSource: <_SplineAreaData>[
-        _SplineAreaData('Январь', 22),
-        _SplineAreaData('Февраль', 40),
-        _SplineAreaData('Март', 30),
-        _SplineAreaData('Апрель', 33),
-        _SplineAreaData('Май', 25)
+    data: LineSeries<SplineAreaData, String>(
+      dataSource: <SplineAreaData>[
+        SplineAreaData('Январь', 22),
+        SplineAreaData('Февраль', 40),
+        SplineAreaData('Март', 30),
+        SplineAreaData('Апрель', 33),
+        SplineAreaData('Май', 25)
       ],
-      xValueMapper: (_SplineAreaData sales, _) => sales.year,
-      yValueMapper: (_SplineAreaData sales, _) => sales.y1,
+      xValueMapper: (SplineAreaData sales, _) => sales.year,
+      yValueMapper: (SplineAreaData sales, _) => sales.y1,
     ),
   ),
   User(
     name: 'Дождливый К.К.',
-    data: LineSeries<_SplineAreaData, String>(
-      dataSource: <_SplineAreaData>[
-        _SplineAreaData('Январь', 25),
-        _SplineAreaData('Февраль', 20),
-        _SplineAreaData('Март', 36),
-        _SplineAreaData('Апрель', 30),
-        _SplineAreaData('Май', 30)
+    data: LineSeries<SplineAreaData, String>(
+      dataSource: <SplineAreaData>[
+        SplineAreaData('Январь', 25),
+        SplineAreaData('Февраль', 20),
+        SplineAreaData('Март', 36),
+        SplineAreaData('Апрель', 30),
+        SplineAreaData('Май', 30)
       ],
-      xValueMapper: (_SplineAreaData sales, _) => sales.year,
-      yValueMapper: (_SplineAreaData sales, _) => sales.y1,
+      xValueMapper: (SplineAreaData sales, _) => sales.year,
+      yValueMapper: (SplineAreaData sales, _) => sales.y1,
     ),
   ),
 ];
 
-class _SplineAreaData {
-  _SplineAreaData(this.year, this.y1);
+class SplineAreaData {
+  SplineAreaData(this.year, this.y1);
   final String year;
   final double y1;
 }
 
 class User {
   String name;
-  LineSeries<_SplineAreaData, String> data;
+  LineSeries<SplineAreaData, String> data;
   User({
     required this.name,
     required this.data,

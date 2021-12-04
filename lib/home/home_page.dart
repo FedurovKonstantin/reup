@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reup/Adding/adding_page.dart';
 import 'package:reup/dashboard/dashboard_page.dart';
 import 'package:reup/profile/profile_page.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -15,6 +16,7 @@ class _HomePageState extends State<HomePage> {
   final pages = const [
     ProfilePage(),
     DashboardPage(),
+    AddingPage(),
   ];
 
   @override
@@ -40,6 +42,11 @@ class _HomePageState extends State<HomePage> {
                 icon: Icon(Icons.bookmark_border),
                 selectedIcon: Icon(Icons.book),
                 label: Text('Мониторинг'),
+              ),
+              NavigationRailDestination(
+                icon: Icon(Icons.add_circle_outline),
+                selectedIcon: Icon(Icons.add_circle),
+                label: Text('Добавить'),
               ),
             ],
           ),
